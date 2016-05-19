@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1463560314 source:d:\acmexample\md5\main.cpp
+	<iostream>
+	<string>
+	"main.h"
+
+1463560286 d:\acmexample\md5\main.h
+	<windows.h>
+	<string>
+	<string.h>
+

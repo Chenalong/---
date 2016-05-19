@@ -1,0 +1,7 @@
+E:\研究所学习资料\自然语言处理\encryp_docu_trans_client\encryp_docu_trans_client\bin\Release\encryp_docu_trans_client.exe
+E:\研究所学习资料\自然语言处理\encryp_docu_trans_client\encryp_docu_trans_client\bin\Release\encryp_docu_trans_client.pdb
+E:\研究所学习资料\自然语言处理\encryp_docu_trans_client\encryp_docu_trans_client\obj\x86\Release\ResolveAssemblyReference.cache
+E:\研究所学习资料\自然语言处理\encryp_docu_trans_client\encryp_docu_trans_client\obj\x86\Release\encryp_docu_trans_client.Form1.resources
+E:\研究所学习资料\自然语言处理\encryp_docu_trans_client\encryp_docu_trans_client\obj\x86\Release\encryp_docu_trans_client.Properties.Resources.resources
+E:\研究所学习资料\自然语言处理\encryp_docu_trans_client\encryp_docu_trans_client\obj\x86\Release\encryp_docu_trans_client.exe
+E:\研究所学习资料\自然语言处理\encryp_docu_trans_client\encryp_docu_trans_client\obj\x86\Release\encryp_docu_trans_client.pdb

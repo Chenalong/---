@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1463640654 source:e:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\rsa\rsa.cpp
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	"rsa.h"
+	<malloc.h>
+
+1463642856 e:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\rsa\rsa.h
+	<windows.h>
+

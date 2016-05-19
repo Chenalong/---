@@ -1,0 +1,7 @@
+EXPORTS
+    DllMain@12 @1
+    SomeFunction @2
+    add @3
+    changeHex @4
+    getMD5 @5
+    mainLoop @6

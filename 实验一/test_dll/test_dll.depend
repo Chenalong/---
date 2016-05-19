@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1463642632 source:e:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\test_dll\main.cpp
+	<iostream>
+	<stdio.h>
+	<des.h>
+	<rsa.h>
+
+1463639890 e:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\test_dll\\des.h
+	<windows.h>
+
+1463642834 e:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\test_dll\\rsa.h
+	<windows.h>
+
