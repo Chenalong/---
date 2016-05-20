@@ -5,3 +5,10 @@ E:\研究所学习资料\自然语言处理\encryp_docu_trans_server\encryp_docu
 E:\研究所学习资料\自然语言处理\encryp_docu_trans_server\encryp_docu_trans_server\obj\x86\Debug\encryp_docu_trans_server.exe
 E:\研究所学习资料\自然语言处理\encryp_docu_trans_server\encryp_docu_trans_server\obj\x86\Debug\encryp_docu_trans_server.pdb
 E:\研究所学习资料\自然语言处理\encryp_docu_trans_server\encryp_docu_trans_server\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\encryp_docu_trans_server\encryp_docu_trans_server\obj\x86\Debug\encryp_docu_trans_server.exe
+E:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\encryp_docu_trans_server\encryp_docu_trans_server\obj\x86\Debug\encryp_docu_trans_server.pdb
+E:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\encryp_docu_trans_server\encryp_docu_trans_server\bin\Debug\encryp_docu_trans_server.exe
+E:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\encryp_docu_trans_server\encryp_docu_trans_server\bin\Debug\encryp_docu_trans_server.pdb
+E:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\encryp_docu_trans_server\encryp_docu_trans_server\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\encryp_docu_trans_server\encryp_docu_trans_server\obj\x86\Debug\encryp_docu_trans_server.encry_doc_trans_server.resources
+E:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\encryp_docu_trans_server\encryp_docu_trans_server\obj\x86\Debug\encryp_docu_trans_server.Properties.Resources.resources

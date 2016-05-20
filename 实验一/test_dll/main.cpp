@@ -93,21 +93,26 @@ void test_rsa()
 
 void test_des()
 {
-    char key[]={0,2,0,0,9,3,5,1,9,8,0,0,9,1,7},buf[255];
+    //cout << ENCRYPT << endl;
+    char key[]= "2342348792840",buf[255];
 	//char str[]="Welcome to My 3-DES Test! --WangJunchuan\n"
 		       //"Northeastern University (www.neu.edu.cn)\n"
 			   //"Email: blackdrn@sohu.com";
-	char str[]="lihuaihui";
-
+	char str[]="chenalong";
+    //cout << "hello_world" << endl;
 	memset(buf, 0, sizeof(buf));
+
 	strcpy(buf, str);
 	puts("\nBefore encrypting");
 	puts(buf);
-	Des_Go(buf, buf, sizeof(str), key, sizeof(key), ENCRYPT);
-	puts("\nAfter encrypting");
-	puts(buf);
+	char result[100];
+	//cout << sizeof(str) << endl;
+	Des_Go(result, buf,  key, ENCRYPT);
 
-	Des_Go(buf, buf, sizeof(str), key, sizeof(key), DECRYPT);
+	puts("\nAfter encrypting");
+	puts(result);
+
+	Des_Go(buf, result,  key, DECRYPT);
 	puts("\nAfter decrypting");
 	puts(buf);
 
@@ -115,6 +120,25 @@ void test_des()
 }
 int main()
 {
+    /*
+    char contend[] = "27d779cba60f2b5d48debdd970c8e732";
+    char ency_file[10000];
+    //cout << "start ency" << endl;
+    rsa_jia_mi(ency_file,contend);
+    char decy_file[1000];
+    cout << decy_file <<endl;
+    cout << "==============" << endl;
+    cout << ency_file << endl;
+    cout << "==============" << endl;
+
+    rsa_jie_mi(decy_file,ency_file);
+    cout << decy_file << endl;
+    //cout << "end ency" << endl;
+    //test_rsa();
+
+    //test_rsa();
+    */
     test_des();
     return 0;
 }
+//i am chen along

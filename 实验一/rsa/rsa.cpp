@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include <stdlib.h>
+#include <iostream>
 #include <time.h>
 #include "rsa.h"
 #include <malloc.h>
@@ -1248,6 +1249,307 @@ void DLL_EXPORT menu()
 
 }
 
+// 第一个参数表示返回的加密字符串  第二个参数表示要加密的字符串
+void DLL_EXPORT rsa_jia_mi(char* ret_ency_str,char* contend)
+{
+    //std::cout <<"jia mi contend is " << contend <<std::endl;
+
+    int  i;
+    //========================导入加密密钥========================================
+    int  n[MAX],e[MAX];
+    for(i=0; i<MAX; i++)
+        n[i]=e[i]=0;/*/简单初始化一下*/
+    FILE *fp;
+    char str[MAX],ch;
+    char filename[] = "private.key";
+    fp=fopen(filename,"r");
+    int k=0;
+    while((ch=fgetc(fp))!=EOF)
+    {
+        if(ch!=' ')
+        {
+            str[k]=ch;
+            k++;
+        }
+        else
+        {
+            for(i=0; i<k; i++)
+            {
+                e[i]=str[k-i-1]-48;
+            }
+            e[MAX-1]=k;
+            k=0;
+        }
+    }
+    for(i=0; i<k; i++)
+        n[i]=str[k-i-1]-48;
+    n[MAX-1]=k;
+    printf("\n加密密钥 e : ");
+    for(i=0; i<e[MAX-1]; i++)
+        printf("%d",e[e[MAX-1]-i-1]);
+    printf("\n");
+    printf("\n    公钥 n : ");
+    for(i=0; i<n[MAX-1]; i++)
+        printf("%d",n[n[MAX-1]-i-1]);
+    printf("\n");
+    fclose(fp);
+    //printf("\n导入(e,n)成功!\n");
+
+    //============================================================================
+
+    printf("导入密钥成功\n");
+
+    //===============================对信息进行加密===============================
+    int count,temp,c;
+    struct slink  *p,*p1,*p2,*h;
+    h=p=p1=p2=(struct slink * )malloc(LEN);
+    h=NULL;
+    //printf("\n输入需要加密的文件路径 : ");
+    //scanf("%s",filename);
+    /*
+    if((fp=fopen(filename,"r"))==NULL)
+    {
+        printf("Cannot open file !\n");
+        exit(0);
+    }
+    */
+    //printf("\n文件的原文内容：\n\n");
+    count=0;
+    for(i = 0 ; contend[i]; i++)
+    {
+        std::cout << contend[i] << std::endl;
+        c=contend[i];
+        k=0;
+        if(c<0)
+        {
+            c=abs(c);/*把负数取正并且做一个标记*/
+            p1->bignum[MAX-2]='0';
+        }
+        else
+        {
+            p1->bignum[MAX-2]='1';
+        }
+
+        while(c/10!=0)
+        {
+            temp=c%10;
+            c=c/10;
+            p1->bignum[k]=temp;
+            k++;
+        }
+        p1->bignum[k]=c;
+        p1->bignum[MAX-1]=k+1;
+        count=count+1;
+        if(count==1)
+            h=p1;
+        else p2->next=p1;
+        p2=p1;
+        p1=(struct slink * )malloc(LEN);
+    }
+    p2->next=NULL;
+    //printf("\n");
+    //fclose(fp);
+
+//   printf("加密后文件的保存路径 : \n");
+//   scanf("%s",encryfile);
+//   fp=fopen(encryfile,"w");
+    //fp=fopen(filename,"w");
+    p=p1=(struct slink * )malloc(LEN);
+    p=h;
+    //printf("\n加密后文件中所形成密文：\n\n");
+    char* ency_cont_ptr = new char[1000];
+    int index = 0;
+    if(h!=NULL)
+        do
+        {
+            expmod( p->bignum, e,n,p1->bignum);
+            ch=p1->bignum[MAX-2];
+            //printf("%c",ch);
+            //fputc(ch,fp);
+            ency_cont_ptr[index++] = ch;
+            if ((p1->bignum[MAX-1]/10) ==0)/*/判断p1->bignum[99]的是否大于十；*/
+            {
+                ch=0+48;
+                //printf("%c",ch);
+                //fputc(ch,fp);
+                ency_cont_ptr[index++] = ch;
+                ch=p1->bignum[MAX-1]+48;
+                //printf("%c",ch);
+                //fputc(ch,fp);
+                ency_cont_ptr[index++] = ch;
+            }
+            else
+            {
+                ch=p1->bignum[MAX-1]/10+48;
+                //printf("%c",ch);
+                //fputc(ch,fp);
+                ency_cont_ptr[index++] = ch;
+                ch=p1->bignum[MAX-1]%10+48;
+                //printf("%c",ch);
+                //fputc(ch,fp);
+                ency_cont_ptr[index++] = ch;
+            }
+
+            for(i=0; i<p1->bignum[MAX-1]; i++)
+            {
+                //printf("%d",p1->bignum[i]);
+                ch=p1->bignum[i]+48;
+                //fputc(ch,fp);
+                //printf("%c",ch);
+                ency_cont_ptr[index++] = ch;
+            }
+            p=p->next;
+            p1=(struct slink * )malloc(LEN);
+        }
+        while(p!=NULL);
+    ency_cont_ptr[index] = '\0';
+    //std::cout << "====================" << std::endl;
+    //std::cout << ency_cont_ptr << std::endl;
+    //std::cout << "====================" << std::endl;
+
+    strcpy(ret_ency_str,ency_cont_ptr);
+    //printf("\n\n");
+    //fclose(fp);
+
+    //=============================================================================
+    return;
+
+}
+
+void DLL_EXPORT rsa_jie_mi(char* ret_ency_str,char* contend)
+{
+    int  i;
+    //========================导入加密密钥========================================
+    int  n[MAX],d[MAX];
+    for(i=0; i<MAX; i++)
+        n[i]=d[i]=0;/*/简单初始化一下*/
+    FILE *fp;
+    char str[MAX],ch;
+    char filename[] = "public.key";
+    fp=fopen(filename,"r");
+    int k=0;
+    while((ch=fgetc(fp))!=EOF)
+    {
+        if(ch!=' ')
+        {
+            str[k]=ch;
+            k++;
+        }
+        else
+        {
+            for(i=0; i<k; i++)
+            {
+                d[i]=str[k-i-1]-48;
+            }
+            d[MAX-1]=k;
+            k=0;
+        }
+    }
+    for(i=0; i<k; i++)
+        n[i]=str[k-i-1]-48;
+    n[MAX-1]=k;
+//    printf("\n加密密钥 e : ");
+//    for(i=0; i<e[MAX-1]; i++)
+//        printf("%d",e[e[MAX-1]-i-1]);
+//    printf("\n");
+//    printf("\n    公钥 n : ");
+//    for(i=0; i<n[MAX-1]; i++)
+//        printf("%d",n[n[MAX-1]-i-1]);
+//    printf("\n");
+    fclose(fp);
+    //printf("\n导入(e,n)成功!\n");
+    printf("\n导入(d,n)成功!\n");
+
+    //============================================================================
+
+    //========================解密================================================
+
+    struct slink *h,*p1,*p2;
+    char encryfile[25],decryfile[25];
+    int j,c,count,temp;
+    i=0;
+    j=3;
+    count=0;
+    h=p1=p2=(struct slink * )malloc(LEN);
+    for(int ii = 0;contend[ii];ii++)
+    {
+        ch = contend[ii];
+        c=ch;
+        if(j==3)
+        {
+            p1->bignum[MAX-2]=c;
+            j--;
+        }
+        else if(j==2)
+        {
+            temp=c-48;
+            j--;
+        }
+        else if(j==1)
+        {
+            p1->bignum[MAX-1]=temp*10+c-48;
+            j--;
+        }
+        else if (j==0)
+        {
+            p1->bignum[i]=c-48;
+            i++;
+            if(i==p1->bignum[MAX-1])
+            {
+                i=0;
+                j=3;
+                count++;
+                if (count==1)
+                    h=p1;
+                else p2->next=p1;
+                p2=p1;
+                p1=(struct slink * )malloc(LEN);
+            }
+        }
+    }
+    p2->next=NULL;
+    //printf("\n");
+    //fclose(fp);
+
+
+//	printf("解密后的明文文件保存路径 : \n");
+//    scanf("%s",decryfile);
+//    fp=fopen(decryfile,"w");
+    char* ency_cont_ptr = new char[1000];
+    int index = 0;
+    //fp=fopen(encryfile,"w");
+    //printf("\n解密密文后文件中的明文:\n\n");
+    p2=(struct slink * )malloc(LEN);
+    p1=h;
+    k=0;
+    if(h!=NULL)/*/temp为暂存ASIIC码的int值*/
+        do
+        {
+            for(i=0; i<MAX; i++)
+                p2->bignum[i]=0;
+            expmod( p1->bignum, d,n,p2->bignum);
+            temp=p2->bignum[0]+p2->bignum[1]*10+p2->bignum[2]*100;
+            if (( p2->bignum[MAX-2])=='0')
+            {
+                temp=0-temp;
+            }/*/转化为正确的ASIIC码，如-78-96形成汉字	*/
+            ch=temp;/*  str[k]--->ch */
+            //printf("%c",ch);/*  str[k]--->ch */
+            //fputc(ch,fp);/*/写入文件str[k]--->ch*/
+            ency_cont_ptr[index++] = ch;
+            k++;
+            p1=p1->next;
+            p2=(struct slink * )malloc(LEN);
+        }
+        while (p1!=NULL);
+        ency_cont_ptr[index] = '\0';
+        strcpy(ret_ency_str,ency_cont_ptr);
+    //printf("\n\n");
+    //fclose(fp);
+    return;
+
+
+}
 /*/-------------------------------------------------主MAIN函数-----------------------------------/*/
 int main()
 {

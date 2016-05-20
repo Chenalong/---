@@ -21,9 +21,11 @@ EXPORTS
     print @20
     printbig @21
     rsa @22
-    rsad @23
-    savepkey @24
-    saveskey @25
-    sub @26
-    tdecrypto @27
-    tencrypto @28
+    rsa_jia_mi @23
+    rsa_jie_mi @24
+    rsad @25
+    savepkey @26
+    saveskey @27
+    sub @28
+    tdecrypto @29
+    tencrypto @30

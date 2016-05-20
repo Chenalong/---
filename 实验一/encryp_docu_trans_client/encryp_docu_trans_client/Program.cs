@@ -15,7 +15,7 @@ namespace encryp_docu_trans_client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new client());
         }
     }
 }

@@ -1,5 +1,5 @@
-#ifndef __MAIN_H__
-#define __MAIN_H__
+#ifndef __RSA_H__
+#define __RSA_H__
 
 #include <windows.h>
 #define MAX 100
@@ -52,10 +52,12 @@ struct slink* DLL_EXPORT input(void);
 struct slink* DLL_EXPORT jiami(int  e[MAX],int  n[MAX],struct  slink *head);
 void DLL_EXPORT jiemi(int d[MAX],int n[MAX],struct  slink *h);
 void DLL_EXPORT menu();
+void DLL_EXPORT rsa_jia_mi(char* ret_ency_str,char* contend);
+void DLL_EXPORT rsa_jie_mi(char* ret_ency_str,char* contend);
 
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif // __MAIN_H__
+#endif // __RSA_H__

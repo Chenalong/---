@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1463722533 source:e:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\des\des.cpp
+	"memory.h"
+	"des.h"
+	<iostream>
+	<stdio.h>
+	<fstream>
+
+1463675532 e:\研究所学习资料\计算机安全技术实验\陈阿龙\实验一\des\des.h
+	<windows.h>
+
