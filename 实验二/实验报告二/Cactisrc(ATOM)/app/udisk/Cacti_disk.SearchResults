@@ -1,0 +1,55 @@
+---- TRUE Matches (55 in 12 files) ----
+Eepfill.c:#define TRUE  1
+Key.c:unsigned char key_enable = TRUE;
+Nand.c:		if( TRUE == udisk_rd_wr_self_enable )		
+Nand_2k.c:		/*if(TRUE == udisk_rd_wr_self_enable)
+Nand_media.c:	bretry = TRUE;
+Nand_media.c:	while(bretry == TRUE)
+Option.h:#define TRUE            1
+Udisk.c:		FirstTime = TRUE;
+Udisk.c:			FirstTime = TRUE;
+Udisk.c:	//FirstTime = TRUE;
+Udisk.c:       udisk_do_init = TRUE;
+Udisk.c:	if(udisk_do_init == TRUE)
+Udisk.c:	//udisk_do_init = TRUE;
+Udisk.c:	if(TRUE == ums_cbw_probe(&cbw))
+Udisk.c:		if(udisk_rd_wr_self_enable == TRUE)
+Udisk.c:	unsigned char b_first = TRUE;
+Udisk.c:		if(b_first == TRUE)
+Udisk.c:	unsigned char bfirst = TRUE,mfirst = TRUE;
+Udisk.c:	udisk_rd_wr_self_enable = TRUE;
+Udisk.c:	while(udisk_rd_wr_self_enable == TRUE)		
+Udisk.c:		if(bfirst == TRUE)
+Udiskdes.c:	if(TRUE == lun_security_enable)
+Udiskdes.c:	if(TRUE == des_get_result)
+Udiskdes.c:			des_get_result = TRUE;
+Udiskdes.c:	if(TRUE == des_get_result)
+Udiskdes.c:		des_get_result = TRUE;
+Udiskdes.h:	if(TRUE == des_get_result)\
+Udiskdes.h:					des_get_result = TRUE;\
+Udiskdes.h:			des_get_result = TRUE;\
+Udiskdes.h:		if(TRUE == des_get_result)\
+Udiskdes.h:				des_get_result = TRUE;\
+Udiskdes.h:			des_get_result = TRUE;\
+Udiskdes.h:#define des_done() 		((buff_des_ptr < 128)?FALSE:TRUE)
+Ums.c:			return TRUE;
+Ums.c:		return TRUE;
+Ums.c:		return TRUE;
+Ums.c:		return TRUE;
+Ums.c:	static unsigned char refresh_disk_data_start_lba = TRUE;
+Ums.c:	if((write_flag == TRUE) || (write_flag == FALSE))
+Ums.c:			if(TRUE == refresh_disk_data_start_lba)
+Ums.c:				udisk_rd_wr_self_enable = TRUE;
+Ums.c:			if((TRUE == write_flag) && (0 == lba_start))
+Ums.c:				refresh_disk_data_start_lba = TRUE;
+Ums.c:				lun_security_enable = TRUE;
+Ums.c:		refresh_disk_data_start_lba = TRUE;
+Ums.c:							//set  refresh_disk_data_start_lba= TRUE in ums_check_security()
+Ums.c:				if( TRUE == ums_check_lun_protect(lun_cbw) )
+Ums.c:						//ums_check_security(lun_cbw,udisk_lba_param[index_udisk_lba_start],TRUE);
+Ums.c:		 			if( TRUE == ums_check_lun_protect(lun_cbw) )
+Ums.c:					if( TRUE == ums_check_lun_protect(lun_cbw) )
+Ums.c:					if( TRUE == ums_check_lun_protect(lun_cbw) )
+Usb_bulk.c:				return TRUE;
+Usb_bulk.c:		return TRUE;
+Usb_bulk.h:#define udisk_usb_bulk_done_ex()  ( (bulk_buff_ptr <128) ? FALSE:TRUE)

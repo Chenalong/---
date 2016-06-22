@@ -1,0 +1,167 @@
+/*
+  Name: udisk.h
+
+  Description: 
+*/
+
+#ifndef _UDISK_H_
+#define _UDISK_H_
+
+//-------------------------------------------------------------------------
+#define DISK_MAX_THREE_ICON		//this is defined for disk icon config
+//#define DISK_TEST_MODE_ENABLE		//enable test code int this 
+//-------------------------------------------------------------------------
+
+//parameter save
+//check code
+#define PARAMETER_CHECK_CODE_OFFSET		0x00
+#define PARAMETER_CHECK_CODE_LEN			0x10
+//config data
+#define PARAMETER_CONFIG_OFFSET			(PARAMETER_CHECK_CODE_OFFSET + PARAMETER_CHECK_CODE_LEN) //0x10
+#define PARAMETER_CONFIG_LEN				0x10
+//key info
+#define PARAMETER_KEY_INFO_OFFSET		(PARAMETER_CONFIG_OFFSET + PARAMETER_CONFIG_LEN) //0x20
+#define PARAMETER_KEY_INFO_LEN			0x30
+#define PARAMETER_KEY_INFO_UID_OFFSET	0x00
+#define PARAMETER_KEY_INFO_UID_LEN		0x10
+#define PARAMETER_KEY_INFO_PWD_OFFSET	(PARAMETER_KEY_INFO_UID_OFFSET + PARAMETER_KEY_INFO_UID_LEN)
+#define PARAMETER_KEY_INFO_PWD_LEN		0x10
+#define PARAMETER_KEY_INFO_PIN_OFFSET	(PARAMETER_KEY_INFO_PWD_OFFSET + PARAMETER_KEY_INFO_PWD_LEN)
+#define PARAMETER_KEY_INFO_PIN_LEN		0x10
+//flash disk parameter
+#define PARAMETER_FLASH_DISK_OFFSET					(PARAMETER_KEY_INFO_OFFSET + PARAMETER_KEY_INFO_LEN) //0x50
+#define PARAMETER_FLASH_DISK_LEN						24
+#define PARAMETER_FLASH_DISK_TOTAL_LBA_OFFSET		0
+#define PARAMETER_FLASH_DISK_TOTAL_LBA_LEN			4
+#define PARAMETER_FLASH_DISK_LBA_SIZE_OFFSET		(PARAMETER_FLASH_DISK_TOTAL_LBA_OFFSET + PARAMETER_FLASH_DISK_TOTAL_LBA_LEN)
+#define PARAMETER_FLASH_DISK_LBA_SIZE_LEN			4
+#define PARAMETER_FLASH_DISK_LUN0_LBA_MAX_OFFSET	(PARAMETER_FLASH_DISK_LBA_SIZE_OFFSET + PARAMETER_FLASH_DISK_LBA_SIZE_LEN)
+#define PARAMETER_FLASH_DISK_LUN0_LBA_MAX_LEN		4
+#define PARAMETER_FLASH_DISK_LUN1_LBA_MAX_OFFSET	(PARAMETER_FLASH_DISK_LUN0_LBA_MAX_OFFSET + PARAMETER_FLASH_DISK_LUN0_LBA_MAX_LEN)
+#define PARAMETER_FLASH_DISK_LUN1_LBA_MAX_LEN		4
+#define PARAMETER_FLASH_DISK_LUN2_LBA_MAX_OFFSET	(PARAMETER_FLASH_DISK_LUN1_LBA_MAX_OFFSET + PARAMETER_FLASH_DISK_LUN1_LBA_MAX_LEN)
+#define PARAMETER_FLASH_DISK_LUN2_LBA_MAX_LEN		4
+#define PARAMETER_FLASH_DISK_LUN3_LBA_MAX_OFFSET	(PARAMETER_FLASH_DISK_LUN2_LBA_MAX_OFFSET + PARAMETER_FLASH_DISK_LUN2_LBA_MAX_LEN)
+#define PARAMETER_FLASH_DISK_LUN3_LBA_MAX_LEN		4
+//lun inquiry data
+//lun 0
+#define PARAMETER_INQUIRY_DATA_OFFSET							(PARAMETER_FLASH_DISK_OFFSET + PARAMETER_FLASH_DISK_LEN)
+#define PARAMETER_INQUIRY_DATA_LEN								(28 * 4)
+#define PARAMETER_INQUIRY_DATA_LUN_VENDOR_STRING_LEN			8
+#define PARAMETER_INQUIRY_DATA_LUN_PRODUCT_STRING_LEN			16
+#define PARAMETER_INQUIRY_DATA_LUN_VERSION_STRING_LEN			4
+
+#define PARAMETER_INQUIRY_DATA_LUN0_VENDOR_STRING_OFFSET		0
+#define PARAMETER_INQUIRY_DATA_LUN0_VENDOR_STRING_LEN			PARAMETER_INQUIRY_DATA_LUN_VENDOR_STRING_LEN
+#define PARAMETER_INQUIRY_DATA_LUN0_PRODUCT_STRING_OFFSET	(PARAMETER_INQUIRY_DATA_LUN0_VENDOR_STRING_OFFSET +PARAMETER_INQUIRY_DATA_LUN0_VENDOR_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN0_PRODUCT_STRING_LEN		PARAMETER_INQUIRY_DATA_LUN_PRODUCT_STRING_LEN
+#define PARAMETER_INQUIRY_DATA_LUN0_VERSION_STRING_OFFSET	(PARAMETER_INQUIRY_DATA_LUN0_PRODUCT_STRING_OFFSET +PARAMETER_INQUIRY_DATA_LUN0_PRODUCT_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN0_VERSION_STRING_LEN		PARAMETER_INQUIRY_DATA_LUN_VERSION_STRING_LEN
+//lun1
+#define PARAMETER_INQUIRY_DATA_LUN1_VENDOR_STRING_OFFSET		(PARAMETER_INQUIRY_DATA_LUN0_VERSION_STRING_OFFSET + PARAMETER_INQUIRY_DATA_LUN0_VERSION_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN1_VENDOR_STRING_LEN			PARAMETER_INQUIRY_DATA_LUN_VENDOR_STRING_LEN
+#define PARAMETER_INQUIRY_DATA_LUN1_PRODUCT_STRING_OFFSET	(PARAMETER_INQUIRY_DATA_LUN1_VENDOR_STRING_OFFSET +PARAMETER_INQUIRY_DATA_LUN1_VENDOR_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN1_PRODUCT_STRING_LEN		PARAMETER_INQUIRY_DATA_LUN_PRODUCT_STRING_LEN
+#define PARAMETER_INQUIRY_DATA_LUN1_VERSION_STRING_OFFSET	(PARAMETER_INQUIRY_DATA_LUN1_PRODUCT_STRING_OFFSET +PARAMETER_INQUIRY_DATA_LUN1_PRODUCT_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN1_VERSION_STRING_LEN		PARAMETER_INQUIRY_DATA_LUN_VERSION_STRING_LEN
+//lun2
+#define PARAMETER_INQUIRY_DATA_LUN2_VENDOR_STRING_OFFSET		(PARAMETER_INQUIRY_DATA_LUN1_VERSION_STRING_OFFSET + PARAMETER_INQUIRY_DATA_LUN1_VERSION_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN2_VENDOR_STRING_LEN			PARAMETER_INQUIRY_DATA_LUN_VENDOR_STRING_LEN
+#define PARAMETER_INQUIRY_DATA_LUN2_PRODUCT_STRING_OFFSET	(PARAMETER_INQUIRY_DATA_LUN2_VENDOR_STRING_OFFSET +PARAMETER_INQUIRY_DATA_LUN2_VENDOR_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN2_PRODUCT_STRING_LEN		PARAMETER_INQUIRY_DATA_LUN_PRODUCT_STRING_LEN
+#define PARAMETER_INQUIRY_DATA_LUN2_VERSION_STRING_OFFSET	(PARAMETER_INQUIRY_DATA_LUN2_PRODUCT_STRING_OFFSET +PARAMETER_INQUIRY_DATA_LUN2_PRODUCT_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN2_VERSION_STRING_LEN		PARAMETER_INQUIRY_DATA_LUN_VERSION_STRING_LEN
+//lun3
+#define PARAMETER_INQUIRY_DATA_LUN3_VENDOR_STRING_OFFSET		(PARAMETER_INQUIRY_DATA_LUN2_VERSION_STRING_OFFSET + PARAMETER_INQUIRY_DATA_LUN2_VERSION_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN3_VENDOR_STRING_LEN			PARAMETER_INQUIRY_DATA_LUN_VENDOR_STRING_LEN
+#define PARAMETER_INQUIRY_DATA_LUN3_PRODUCT_STRING_OFFSET	(PARAMETER_INQUIRY_DATA_LUN3_VENDOR_STRING_OFFSET +PARAMETER_INQUIRY_DATA_LUN3_VENDOR_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN3_PRODUCT_STRING_LEN		PARAMETER_INQUIRY_DATA_LUN_PRODUCT_STRING_LEN
+#define PARAMETER_INQUIRY_DATA_LUN3_VERSION_STRING_OFFSET	(PARAMETER_INQUIRY_DATA_LUN3_PRODUCT_STRING_OFFSET +PARAMETER_INQUIRY_DATA_LUN3_PRODUCT_STRING_LEN)
+#define PARAMETER_INQUIRY_DATA_LUN3_VERSION_STRING_LEN		PARAMETER_INQUIRY_DATA_LUN_VERSION_STRING_LEN
+
+//security disk pwd
+#define PARAMETER_SECURITY_DISK_PWD_OFFSET						(PARAMETER_INQUIRY_DATA_OFFSET + PARAMETER_INQUIRY_DATA_LEN)
+#define PARAMETER_SECURITY_DISK_PWD_LEN							64
+
+
+
+//----------------------------------------------------------------------
+#define LUNLBA_MIN      100
+#define LBA_RESERVED_FOR_HIDDEN_PARTITION      1500
+//
+//---------------------------------------------------
+#define index_udisk_lba_start							0
+#define index_udisk_lba_xfer_count					1
+#define index_udisk_lba_split_max_count				2
+#define index_udisk_lba_split_count					3
+#define index_udisk_lba_parameter_all				(index_udisk_lba_split_count +1 )
+//-------------------------------------------------------------------------
+extern void udisk_init(void);
+extern void udisk_poll(void);
+
+extern unsigned int udisk_read(unsigned int * udisk_lba_param);
+extern unsigned int udisk_write(unsigned int * udisk_lba_param);
+extern void udisk_send_usb(unsigned char * buff,unsigned short len);
+extern void udisk_receive_usb(unsigned char * buff,unsigned short len);
+extern void udisk_check_protect();
+
+extern void udisk_read_parameter(unsigned char * pbuff);
+extern void udisk_write_parameter(unsigned char * pbuff);
+extern void udisk_init_lun_parameter(void);
+extern void udisk_get_luns_lba_start(void);
+extern void restore_udisk_log2phy_buff(void);
+extern unsigned char * release_udisk_log2phy_buff(void);
+
+extern void udisk_led(unsigned int on);
+
+typedef struct _UDISKLUN{
+	unsigned int lun_lba_start;
+	unsigned char lun_status;
+}UDISKLUN ,* PUDISKLUN;
+#define mask_lun_status_enable		0x80
+#define mask_lun_status_ready		0x40
+#define mask_lun_status_change		0x20
+#define mask_lun_status_pwd_error	0x10
+#define mask_lun_status_protect		0x08
+#define mask_lun_status_no			0x07
+
+//led
+#define LED_ON			1
+#define LED_OFF			0
+
+#ifndef _UDISK_C_
+extern unsigned char udisk_do_init ;
+//--------------------------------
+#ifdef DISK_TEST_MODE_ENABLE
+#endif
+unsigned char udisk_rd_wr_self_enable;
+
+extern unsigned char lun_num ;
+//
+extern unsigned int lun_low_lba_start_ex[4];
+extern unsigned char lun_low_status[4];
+extern unsigned char pudisk_lun_low_ex[4];
+extern unsigned char lun_security_enable;
+extern const unsigned char security_key;
+#endif
+
+
+#define UDISK_DEBUG
+
+#ifdef UDISK_DEBUG
+#define trace1(m)				printf(m)
+#define trace2(m,n)				printf(m,n)
+#define trace3(m,n,x)				printf(m,n,x)
+#define trace4(m,n,x,y)			printf(m,n,x,y)
+#define trace5(m,n,x,y,z)			printf(m,n,x,y,z)
+#else
+#define trace1(m)				;
+#define trace2(m,n)			;
+#define trace3(m,n,x)			;
+#define trace4(m,n,x,y)		;
+#define trace5(m,n,x,y,z)		;
+#endif
+
+
+#endif
+

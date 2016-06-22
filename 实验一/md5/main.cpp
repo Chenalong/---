@@ -149,6 +149,7 @@ string DLL_EXPORT changeHex(int a)
     }
     return str;
 }
+
 void DLL_EXPORT getMD5(char* ret_str,char* input)
 {
     string source = string(input);
@@ -177,9 +178,9 @@ void DLL_EXPORT print_string(char* ret_str,char* input)
 int main()
 {
     string ss;
-//    cin>>ss;
-    //string s=getMD5("abc");
-    //cout<<s;
+    cin>>ss;
+    string s=getMD5("admin");
+    cout<<s << endl;
     return 0;
 }
 

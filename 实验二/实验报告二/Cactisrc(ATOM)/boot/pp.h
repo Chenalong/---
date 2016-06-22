@@ -1,0 +1,27 @@
+#ifndef __CCORE_PPORT_H__
+#define __CCORE_PPORT_H__
+
+#define PPORT_REG_BASE   (0x1802E800)
+#define PPORT_DATA_BASE  (0x10000000)
+
+#define PPORT_CTL_REG1 (PPORT_REG_BASE+0)
+#define PPORT_CTL_REG2 (PPORT_REG_BASE+4)
+#define PPORT_CTL_REG3 (PPORT_REG_BASE+8)
+#define PPORT_CTL_REG4 (PPORT_REG_BASE+0x0c)
+#define PPORT_CTL_REG5 (PPORT_REG_BASE+0x10)
+#define PPORT_CTL_REG6 (PPORT_REG_BASE+0x14)
+#define PPORT_CTL_REG7 (PPORT_REG_BASE+0x18)
+#define PPORT_CTL_REG8 (PPORT_REG_BASE+0x1c)
+#define PPORT_CTL_REG9 (PPORT_REG_BASE+0x20)
+
+
+#define PPORT_WR_DATA_CTL     (PPORT_REG_BASE+0x2c)
+#define PPORT_RD_DATA_CTL     (PPORT_REG_BASE+0x30)
+
+#define PPORT_CTL_34             (PPORT_REG_BASE+0x34)
+
+#define ExtPortCTL 0x1802E8FC
+
+#endif
+
+//===================================================

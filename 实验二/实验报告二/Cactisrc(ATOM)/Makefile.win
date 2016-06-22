@@ -1,0 +1,116 @@
+# Project: Cacti
+# Makefile created by ZSoftdev2.0.0.1
+
+CPP  = arca-g++.exe
+CC   = arca-gcc.exe
+LD   = arca-ld.exe
+OBJDUMP   = arca-objdump.exe
+OBJCOPY   = arca-objcopy.exe
+OBJ  = bin/head.o bin/init.o bin/trap.o bin/hal.o bin/rng.o bin/usbdrv.o bin/ctype.o bin/string.o bin/vsprintf.o bin/bigint.o bin/ecc.o bin/ECES.o bin/eepfill.o bin/GF2m.o bin/key.o bin/main.o bin/mdlintf.o bin/nand.o bin/nand_2k.o bin/nand_media.o bin/rsa_big.o bin/testall.o bin/udisk.o bin/udiskdes.o bin/ums.o bin/usb_bulk.o bin/usb_disk.o bin/md5.o $(RES)
+LINKOBJ  = bin/head.o bin/init.o bin/trap.o bin/hal.o bin/rng.o bin/usbdrv.o bin/ctype.o bin/string.o bin/vsprintf.o bin/bigint.o bin/ecc.o bin/ECES.o bin/eepfill.o bin/GF2m.o bin/key.o bin/main.o bin/mdlintf.o bin/nand.o bin/nand_2k.o bin/nand_media.o bin/rsa_big.o bin/testall.o bin/udisk.o bin/udiskdes.o bin/ums.o bin/usb_bulk.o bin/usb_disk.o bin/md5.o $(RES)
+LIBS = -T linkscript/normal.ld   -nostdlib 
+ELF_DIR =  arca-linux
+GCC_VER =  3.0
+ADD_LIBS = -L $(GCC_EXEC_PREFIX)../../$(ELF_DIR)/lib/$(ML_DIR) -L $(GCC_EXEC_PREFIX)$(ELF_DIR)/$(GCC_VER)/$(ML_DIR) -lgcc
+INCS =  -I"libc"  -I"driver"  -I"include"  -I"boot"  -I"driver"  -I"boot"  -I"include"  -I"driver"  -I"libc"  -I"app/udisk"  -I"app/udisk"  -I"libc"  -I"include"  -I"driver"  -I"boot"  -I"app/udisk"  -I"app/udisk"  -I"boot"  -I"driver"  -I"include"  -I"libc"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk" 
+CXXINCS =  -I"libc"  -I"driver"  -I"include"  -I"boot"  -I"driver"  -I"boot"  -I"include"  -I"driver"  -I"libc"  -I"app/udisk"  -I"app/udisk"  -I"libc"  -I"include"  -I"driver"  -I"boot"  -I"app/udisk"  -I"app/udisk"  -I"boot"  -I"driver"  -I"include"  -I"libc"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk"  -I"app/udisk" 
+EXE  = bin/Cacti.exe
+CXXFLAGS = $(CXXINCS)   -O1  -nostdlib
+CFLAGS = $(INCS)   -O1  -nostdlib
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before bin/Cacti.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(EXE)
+
+$(EXE): $(OBJ)
+	$(LD)  $(LIBS) $(LINKOBJ) -o "bin\Cacti.exe" $(ADD_LIBS)
+	$(OBJDUMP) -D  "bin\Cacti.exe" > "bin\Cacti.dump"
+	$(OBJCOPY) -O binary  "bin\Cacti.exe" "bin\Cacti.bin"
+
+bin/head.o: boot/head.S
+	$(CC)  $(CFLAGS) -c boot/head.S -o bin/head.o
+
+bin/init.o: boot/init.c
+	$(CC)  $(CFLAGS) -c boot/init.c -o bin/init.o
+
+bin/trap.o: boot/trap.c
+	$(CC)  $(CFLAGS) -c boot/trap.c -o bin/trap.o
+
+bin/hal.o: driver/hal.c
+	$(CC)  $(CFLAGS) -c driver/hal.c -o bin/hal.o
+
+bin/rng.o: driver/rng.c
+	$(CC)  $(CFLAGS) -c driver/rng.c -o bin/rng.o
+
+bin/usbdrv.o: driver/usbdrv.c
+	$(CC)  $(CFLAGS) -c driver/usbdrv.c -o bin/usbdrv.o
+
+bin/ctype.o: libc/ctype.c
+	$(CC)  $(CFLAGS) -c libc/ctype.c -o bin/ctype.o
+
+bin/string.o: libc/string.c
+	$(CC)  $(CFLAGS) -c libc/string.c -o bin/string.o
+
+bin/vsprintf.o: libc/vsprintf.c
+	$(CC)  $(CFLAGS) -c libc/vsprintf.c -o bin/vsprintf.o
+
+bin/bigint.o: app/udisk/bigint.c
+	$(CC)  $(CFLAGS) -c app/udisk/bigint.c -o bin/bigint.o
+
+bin/ecc.o: app/udisk/ecc.c
+	$(CC)  $(CFLAGS) -c app/udisk/ecc.c -o bin/ecc.o
+
+bin/ECES.o: app/udisk/ECES.c
+	$(CC)  $(CFLAGS) -c app/udisk/ECES.c -o bin/ECES.o
+
+bin/eepfill.o: app/udisk/eepfill.c
+	$(CC)  $(CFLAGS) -c app/udisk/eepfill.c -o bin/eepfill.o
+
+bin/GF2m.o: app/udisk/GF2m.c
+	$(CC)  $(CFLAGS) -c app/udisk/GF2m.c -o bin/GF2m.o
+
+bin/key.o: app/udisk/key.c
+	$(CC)  $(CFLAGS) -c app/udisk/key.c -o bin/key.o
+
+bin/main.o: app/udisk/main.c
+	$(CC)  $(CFLAGS) -c app/udisk/main.c -o bin/main.o
+
+bin/mdlintf.o: app/udisk/mdlintf.c
+	$(CC)  $(CFLAGS) -c app/udisk/mdlintf.c -o bin/mdlintf.o
+
+bin/nand.o: app/udisk/nand.c
+	$(CC)  $(CFLAGS) -c app/udisk/nand.c -o bin/nand.o
+
+bin/nand_2k.o: app/udisk/nand_2k.c
+	$(CC)  $(CFLAGS) -c app/udisk/nand_2k.c -o bin/nand_2k.o
+
+bin/nand_media.o: app/udisk/nand_media.c
+	$(CC)  $(CFLAGS) -c app/udisk/nand_media.c -o bin/nand_media.o
+
+bin/rsa_big.o: app/udisk/rsa_big.c
+	$(CC)  $(CFLAGS) -c app/udisk/rsa_big.c -o bin/rsa_big.o
+
+bin/testall.o: app/udisk/testall.c
+	$(CC)  $(CFLAGS) -c app/udisk/testall.c -o bin/testall.o
+
+bin/udisk.o: app/udisk/udisk.c
+	$(CC)  $(CFLAGS) -c app/udisk/udisk.c -o bin/udisk.o
+
+bin/udiskdes.o: app/udisk/udiskdes.c
+	$(CC)  $(CFLAGS) -c app/udisk/udiskdes.c -o bin/udiskdes.o
+
+bin/ums.o: app/udisk/ums.c
+	$(CC)  $(CFLAGS) -c app/udisk/ums.c -o bin/ums.o
+
+bin/usb_bulk.o: app/udisk/usb_bulk.c
+	$(CC)  $(CFLAGS) -c app/udisk/usb_bulk.c -o bin/usb_bulk.o
+
+bin/usb_disk.o: app/udisk/usb_disk.c
+	$(CC)  $(CFLAGS) -c app/udisk/usb_disk.c -o bin/usb_disk.o
+
+bin/md5.o: app/udisk/md5.c
+	$(CC)  $(CFLAGS) -c app/udisk/md5.c -o bin/md5.o

@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TestDll - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPD26F.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/TestDll.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Users\Administrator\Desktop\Demo U+Key+new\TestDll\TestDllDlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPD26F.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSPD270.tmp" with contents
+[
+UKEYDLL.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/TestDll.pdb" /debug /machine:I386 /out:"Debug/TestDll.exe" /pdbtype:sept 
+".\Debug\des.obj"
+".\Debug\GfL.obj"
+".\Debug\md5.obj"
+".\Debug\StdAfx.obj"
+".\Debug\TestDll.obj"
+".\Debug\TestDllDlg.obj"
+".\Debug\TestDll.res"
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSPD270.tmp"
+<h3>Output Window</h3>
+Compiling...
+TestDllDlg.cpp
+C:\Users\Administrator\Desktop\Demo U+Key+new\TestDll\TestDllDlg.cpp(278) : warning C4101: 'ss' : unreferenced local variable
+C:\Users\Administrator\Desktop\Demo U+Key+new\TestDll\TestDllDlg.cpp(301) : warning C4101: 'ss' : unreferenced local variable
+C:\Users\Administrator\Desktop\Demo U+Key+new\TestDll\TestDllDlg.cpp(408) : warning C4101: 'ss' : unreferenced local variable
+C:\Users\Administrator\Desktop\Demo U+Key+new\TestDll\TestDllDlg.cpp(427) : warning C4101: 'ss' : unreferenced local variable
+C:\Users\Administrator\Desktop\Demo U+Key+new\TestDll\TestDllDlg.cpp(516) : warning C4101: 'ss' : unreferenced local variable
+C:\Users\Administrator\Desktop\Demo U+Key+new\TestDll\TestDllDlg.cpp(596) : warning C4101: 'ss' : unreferenced local variable
+C:\Users\Administrator\Desktop\Demo U+Key+new\TestDll\TestDllDlg.cpp(660) : warning C4101: 'ss' : unreferenced local variable
+Linking...
+
+
+
+<h3>Results</h3>
+TestDll.exe - 0 error(s), 7 warning(s)
+</pre>
+</body>
+</html>

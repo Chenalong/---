@@ -1,0 +1,4 @@
+---- process_cbw Matches (3 in 3 files) ----
+Udisk.c:  			process_cbw(&cbw);
+Ums.c:unsigned int process_cbw(CBW * pcbw)
+Ums.h:extern unsigned int process_cbw(CBW * pcbw);
